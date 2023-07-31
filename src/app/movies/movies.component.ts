@@ -11,16 +11,13 @@ import { MovieService } from '../services/movie.service';
 export class MoviesComponent implements OnInit{
   constructor(private activatedRoute:ActivatedRoute, private movieService:MovieService){}
   movies: any[];
-
+  filterText:string;
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params=>{
-      let filterText = params["filterText"];
+      this.filterText = params["filterText"];
       this.movieService.getMovies().subscribe(data=>{
-        console.log(data);
-        this.movies = filterText?data.filter((p:any)=> p.title.toLocaleLowerCase().indexOf(filterText?filterText.toLocaleLowerCase():"")!==-1):data;
-      });
-      
-      
+        this.movies = this.filterText?data.filter((p:any)=> p.title.toLocaleLowerCase().indexOf(this.filterText?this.filterText.toLocaleLowerCase():"")!==-1):data;
+      });   
     });
   }
 }

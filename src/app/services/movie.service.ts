@@ -7,17 +7,27 @@ export class MovieService {
 
   constructor(private http: HttpClient) { 
   }
-  path = "http://localhost:3000/movies";
-  //path = "https://imdb-top-100-movies.p.rapidapi.com/";
+  moviesPath = "http://localhost:3000/movies";
+  //moviesPath = "https://imdb-top-100-movies.p.rapidapi.com/";
+
+  getMoviePath="http://localhost:3000/movies?rank=";
+  //getMoviePath = "https://imdb-top-100-movies.p.rapidapi.com/top";
+
+  // For imdb-top-100-movies-api
+  private httpOptions={
+    headers: new HttpHeaders({
+      'X-RapidAPI-Key': 'key',
+      'X-RapidAPI-Host': 'imdb-top-100-movies.p.rapidapi.com'
+    })}
 
   getMovies():Observable<any[]>{
-    /*const httpOptions={
-      headers: new HttpHeaders({
-        'X-RapidAPI-Key': 'key',
-        'X-RapidAPI-Host': 'imdb-top-100-movies.p.rapidapi.com'
-      })
-    }*/
-    return this.http.get<any[]>(this.path,/*httpOptions*/).pipe(
+    return this.http.get<any[]>(this.moviesPath,this.httpOptions).pipe(
+      tap(data=>console.log(JSON.stringify(data))),
+      catchError(this.handleError)
+    );
+  }
+  getMovieByRank(rank:string):Observable<any>{
+    return this.http.get<any>(this.getMoviePath+rank,this.httpOptions).pipe(
       tap(data=>console.log(JSON.stringify(data))),
       catchError(this.handleError)
     );

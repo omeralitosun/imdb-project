@@ -1,16 +1,16 @@
-<h3 *ngIf="movies.length>0; else noMovies" style="color: antiquewhite;">Top {{movies.length}}</h3>
+<h3 *ngIf="movies.length>0; else noMovies" style="color: cadetblue;">Top {{movies.length}}</h3>
 <div class="row">
   <ng-template #noMovies>
     <div class="alert alert-info" role="alert">
-      Aradığınız kelimeye uygun film bulunamadı.
+      "{{filterText}}" uygun film bulunamadı.
     </div>
   </ng-template>
-  <div *ngFor="let movie of movies" class="card" style="width: 18rem; background-color: #777;">
+  <div *ngFor="let movie of movies" class="card" style="width: 18rem; background-color: bisque;">
     <img [src]="movie.image" class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title"><strong>{{movie.title}}</strong></h5>
       <h6>IMDB: <strong>{{movie.rating}}</strong></h6>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+      <a routerLink="/movies/detail/{{movie.rank}}" class="btn btn-primary">Go detail</a>
     </div>
   </div>
 </div>
