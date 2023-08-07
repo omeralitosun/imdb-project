@@ -1,22 +1,28 @@
 <body>
-    
-<main class="container">
-  <div class="row mb-2">
-    <div class="col-md-12">
-      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250" style="height: 600px;background-color: bisque;" >
-        <div class="col p-4 d-flex flex-column position-static">
-          <strong class="d-inline-block mb-2 text-primary-emphasis">Rank : {{movie.rank}}</strong>
-          <strong class="d-inline-block mb-2 text-primary-emphasis">IMDB Rating : {{movie.rating}}</strong>
-          <h3 class="mb-0">{{movie.title}}</h3>
-          <div class="mb-1 text-body-secondary">{{movie.year}}</div>
-          <h5>Genre:</h5>
-          <p *ngFor="let genre of movie.genre" class="card-text"> * {{genre}}</p>
-        </div>
-        <div class="col-auto d-lg-block">
+
+  <main class="container">
+    <div class="row mb-2">
+      <div class="col-md-12">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-2 shadow-sm h-md-250 card">
+          <div class="col p-5 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2" style="color: rgba(209, 209, 208, 0.856);">Rank :
+              {{movie.rank}}</strong>
+            <strong class="d-inline-block mb-2" style="color: rgba(209, 209, 208, 0.856);">IMDB Rating :
+              {{movie.rating}}</strong>
+            <h3 class="mb-0">{{movie.title}}</h3>
+            <div class="mb-1" style="color: rgb(165, 147, 124);">{{movie.year}}</div>
+            <h5>Genre:</h5>
+            <p *ngFor="let genre of movie.genre" class="card-text" style="color: rgb(167, 166, 121);"> * {{genre}}</p>
+            <h5>Description:</h5>
+            <p class="card-text" style="color: rgb(167, 166, 121);"> Lorem ipsum dolor sit, amet consectetur adipisicing
+              elit. Quae, vero. Dignissimos aperiam enim debitis rem quis recusandae sed ratione, et, doloremque tempore
+              nesciunt quidem unde ipsam laborum necessitatibus facere asperiores.</p>
+          </div>
+          <div class="col-auto d-lg-block">
             <img [src]="movie.image" class="card-img-top" alt="...">
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</main>
+  </main>
 </body>

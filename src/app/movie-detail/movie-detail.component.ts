@@ -16,8 +16,8 @@ export class MovieDetailComponent implements OnInit {
     this.activatedRoute.params.subscribe(params => {
       let rank = params["id"];
       this.movieService.getMovieByRank(rank).subscribe(data=>{
-        this.movie=data[0]; // For json-server
-        //this.movie=data; //For api
+        //this.movie=data[0]; // For json-server
+        this.movie=data; //For api
       });
     });
   }

@@ -7,16 +7,16 @@ export class MovieService {
 
   constructor(private http: HttpClient) { 
   }
-  moviesPath = "http://localhost:3000/movies";
-  //moviesPath = "https://imdb-top-100-movies.p.rapidapi.com/";
+  //moviesPath = "http://localhost:3000/movies";
+  moviesPath = "https://imdb-top-100-movies.p.rapidapi.com/";
 
-  getMoviePath="http://localhost:3000/movies?rank=";
-  //getMoviePath = "https://imdb-top-100-movies.p.rapidapi.com/top";
+  //getMoviePath="http://localhost:3000/movies?rank=";
+  getMoviePath = "https://imdb-top-100-movies.p.rapidapi.com/top";
 
   // For imdb-top-100-movies-api
   private httpOptions={
     headers: new HttpHeaders({
-      'X-RapidAPI-Key': 'key',
+      'X-RapidAPI-Key': '8e4c5e1984mshf25f7ca6804bbabp1c48b6jsnbea71ff3f9eb',
       'X-RapidAPI-Host': 'imdb-top-100-movies.p.rapidapi.com'
     })}
 

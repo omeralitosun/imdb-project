@@ -1,16 +1,19 @@
-<h3 *ngIf="movies.length>0; else noMovies" style="color: cadetblue;">Top {{movies.length}}</h3>
-<div class="row">
+<div *ngIf="movies?movies.length>0:false; else noMovies" style="text-align: right; padding-right: 20px; color: rgb(179, 158, 64); "><u>{{movies.length}} movies found</u></div>
+<div class="row" style="margin: 0 auto; width: 66vw;">
   <ng-template #noMovies>
-    <div class="alert alert-info" role="alert">
+    <div class="alert alert-warning" role="alert">
       "{{filterText}}" uygun film bulunamadı.
     </div>
   </ng-template>
-  <div *ngFor="let movie of movies" class="card" style="width: 18rem; background-color: bisque;">
+  <div *ngFor="let movie of movies" class="card">
+      <a *ngIf="isLoggedIn()==true" class="favori" [class.active]="isExistsFavorite(movie.rank)" title="Favorite" (click)="addFavorite(movie.rank)"><span class="material-symbols-outlined">
+        favorite
+        </span></a>
     <img [src]="movie.image" class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title"><strong>{{movie.title}}</strong></h5>
       <h6>IMDB: <strong>{{movie.rating}}</strong></h6>
-      <a routerLink="/movies/detail/{{movie.rank}}" class="btn btn-primary">Go detail</a>
+      <a routerLink="/movies/detail/{{movie.rank}}" class="btn btn-warning">Go detail</a>
     </div>
   </div>
 </div>

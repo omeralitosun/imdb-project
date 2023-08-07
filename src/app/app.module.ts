@@ -9,6 +9,13 @@ import { NavComponent } from './nav/nav.component';
 import { MoviesComponent } from './movies/movies.component';
 import { MovieFilterPipe } from './movies/movie-filter.pipe';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatGridListModule} from '@angular/material/grid-list';
+import { LoginComponent } from './login/login.component';
+import { AccountService } from './services/account.service';
+import { User } from './login/user';
+import { LoginGuard } from './login/login.guard';
+
 
 @NgModule({
   declarations: [
@@ -16,15 +23,18 @@ import { MovieDetailComponent } from './movie-detail/movie-detail.component';
     NavComponent,
     MoviesComponent,
     MovieFilterPipe,
-    MovieDetailComponent
+    MovieDetailComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatGridListModule
   ],
-  providers: [],
+  providers: [AccountService,User,LoginGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

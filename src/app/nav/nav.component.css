@@ -1,0 +1,13 @@
+::placeholder {
+    color: rgb(179, 158, 64);
+}
+
+.favorite {
+    text-decoration: none;
+    color: bisque;
+    font-size: 15px;
+}
+.favorite:hover{
+    text-decoration: underline;
+    color: rgb(119, 119, 119);
+}
